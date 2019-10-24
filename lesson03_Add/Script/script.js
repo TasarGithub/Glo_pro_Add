@@ -1,4 +1,4 @@
-// lesson05-Add
+// bonus01
 let lang = prompt('Выберите язык дней недели: en/ru');
 
 lang = lang.toLowerCase().trim();
