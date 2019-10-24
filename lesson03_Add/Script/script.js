@@ -1,3 +1,4 @@
+// lesson05-Add
 let lang = prompt('Выберите язык дней недели: en/ru');
 
 lang = lang.toLowerCase().trim();
