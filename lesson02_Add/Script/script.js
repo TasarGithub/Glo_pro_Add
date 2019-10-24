@@ -1,4 +1,4 @@
-//Lesson02-Add
+//Lesson04-Add
 let num="266219";
 let amount;
 
