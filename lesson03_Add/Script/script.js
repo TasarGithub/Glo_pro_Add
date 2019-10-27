@@ -1,25 +1,26 @@
-// bonus01
-// Написать программу, которая последовательно запрашивает два числа, 
-// после чего сравнивает их и выводит сообщение: 
-// «Первое число больше второго», «Второе число больше первого» или «Числа равны». 
-// Необходимо учесть ситуации, когда пользователь ввел строку или вообще не ввел ничего.
+// lesson06-Add
 
-        function getNumber (index){
-            let number;
-            do {
-                number = prompt('Введите '+ index +'ое число.', index);    
-            } while  (isNaN(number) ||  !isFinite(number) || number == null);
-            return number;
-        }         
-        let number1 = getNumber(1);
-        let number2 = getNumber (2);
-        if (number1 > number2) {
-            alert('Первое число ' + number1 + ' больше второго ' + number2);
-            console.log('Первое число ' + number1 + ' больше второго ' + number2);
-        } else if (number1 < number2) {
-            alert('Второе число ' + number2 + ' больше первого ' + number1);
-            console.log('Второе число ' + number2 + ' больше первого ' + number1);
-        } else {
-            alert ('Числа равны');
-            console.log('Числа равны');
-        }
+// Создать массив week и записать в него дни недели в виде строк
+// ·        Вывести на экран все дни недели
+// ·        Каждый из них с новой строчки
+// ·        Выходные дни - курсивом
+// ·        Текущий день - жирным шрифтом(использовать объект даты
+
+'use strict'
+
+let weekDays= ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+let out_array = document.getElementById('out_arr');
+let date = new Date();
+
+for (let i = 0; i < weekDays.length; i++){
+  if (weekDays[i] === 'saturday' || weekDays[i] === 'sunday'){
+    if (i == date.getDay() ){
+      out_array.innerHTML +='<i>' + '<b>' + weekDays[i] +  '</b>' + '</i>' + '<br>';
+    } else {
+    out_array.innerHTML += '<i>' + weekDays[i] + '</i>' + '<br>';
+    }
+  } else {
+    out_array.innerHTML +=  weekDays[i] + '<br>';
+  }
+
+} 
