@@ -1,31 +1,29 @@
 //Lesson04-Add
+
+
+// 1) Создайте функцию, которая принимает 1 аргумент (название произвольное)
+// — Если как аргумент передана не строка - функция оповещает об этом пользователя
+// — В полученной (как аргумент) строке функция должна убрать все пробелы в начале и в конце
+// — Если строка более 30 знаков - то после 30го символа часть текста скрывается и вместо них появляются три точки (...)
+
+
+
 let num="266219";
 let amount;
 
-//Массив цифр числа 266219
-symbolArray=num.split("");
+function appString(str) {
 
-//Упрощенный неуниверсальный способ.
-// console.log( symbolArray );
-// amount=symbolArray[0]*symbolArray[1]*
-// symbolArray[2]*symbolArray[3]*
-// symbolArray[4]*symbolArray[5];
-// console.log( amount );
-// DataView,cx/v,xc./v, /zcxV<>/c.xv,c./v,xcbmvm
-
-//Универсальный способ подсчета произведения чисел
-let lenghtNum = num.length;
-let i=0;
-amount =1;
-console.log( amount );
-for (; i<=lenghtNum-1; i++ ) {
-    amount=amount*symbolArray[i];
-    // console.log( symbolArray[i] );
-    // console.log( i );
-    console.log( amount );
+  if (typeof(str) !== 'string'){
+    alert ('введена не строка - ' + str + ',тип '+ typeof(str) );
+    return ' э слюшай да, строку вводи, да ээ';
+  } else {
+    str.trim();
+    if (str.length > 30) {
+      str =  str.substr(0,30) + '...';
+    }
+  }
+  return str;
 }
-// возведение в степень
-amount=amount**3;
-console.log( amount );
-let amountString=String(amount);
-console.log( amountString.substr(0,2) );
+
+console.log ('Вводим не строку', appString(10));
+console.log ('Вводим строку больше 30 знаков -> получаем', appString('123456789123456789123456789999999999---'));
