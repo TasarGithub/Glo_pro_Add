@@ -22,5 +22,4 @@ for (let i = 0; i < weekDays.length; i++){
   } else {
     out_array.innerHTML +=  weekDays[i] + '<br>';
   }
-
 } 
