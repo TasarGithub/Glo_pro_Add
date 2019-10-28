@@ -5,7 +5,7 @@
 // Написать условия при котором в зависимости от значения lang будут выводится дни недели
 // на русском или английском языке. Решите задачу  через if,  через switch-case 
 // через многомерный массив без ифов и switch.
-let lang = promt ('Укажите язык en/ru','ru'),
+let lang = prompt ('Укажите язык en/ru','ru'),
     arrayDays = [['понедельник', 'вторник', 'среда', 'четврег', 'пятница', 'суббота', 'воскресенье'],
     ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']],
     result = ' ';
@@ -34,7 +34,7 @@ switch (lang){
 }
 console.log ('многомерный массив');
 result = (lang === 'ru'|| lang === 'en')?
-  ((lang === 'ru')? arrayDays[1] : arrayDays[2]) : 'Ну что опять не так?';
+  ((lang === 'ru')? arrayDays[0] : arrayDays[1]) : 'Ну что опять не так?';
   console.log(result);
 // 2
 // У нас есть переменная namePerson. Если значение этой переменной “Артем” 
