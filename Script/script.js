@@ -38,9 +38,7 @@ console.log ('многомерный массив');
 //   console.log(result);
 
 let index = lang !=='ru';
-index = index* 1;
-console.log (index);
-
+index = index * 1;
 console.log (arrayDays[index]);
 
 // 2
