@@ -13,13 +13,16 @@ let out_array = document.getElementById('out_arr');
 let date = new Date();
 
 for (let i = 0; i < weekDays.length; i++){
+ 
   if (weekDays[i] === 'saturday' || weekDays[i] === 'sunday'){
-    if (i == date.getDay() ){
-      out_array.innerHTML +='<i>' + '<b>' + weekDays[i] +  '</b>' + '</i>' + '<br>';
+     if (i === date.getDay() ){
+        out_array.innerHTML +='<b> ' + '<i> ' + weekDays[i] + ' </i>'+ ' </b>' + ' <br>';
+        } else {
+        out_array.innerHTML +='<i> ' + weekDays[i] + ' </i>' + ' <br>';
+        } 
+    } else if (i === date.getDay() ){
+        out_array.innerHTML +='<b> ' + weekDays[i] + ' </b>' + ' <br>';
     } else {
-    out_array.innerHTML += '<i>' + weekDays[i] + '</i>' + '<br>';
+      out_array.innerHTML +=  weekDays[i] + ' <br>';
     }
-  } else {
-    out_array.innerHTML +=  weekDays[i] + '<br>';
-  }
 } 
