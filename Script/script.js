@@ -15,7 +15,7 @@ function appString(str) {
   } else {
     str.trim();
     if (str.length > 30) {
-      str =  str.substr(0,30) + '...';
+      str =  str.substring(0,30) + '...';
     }
   }
   return str;
