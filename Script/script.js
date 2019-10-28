@@ -11,7 +11,7 @@ let arr = [12131,2444,365656,4767,5878,298989,46554],
 
 for (let i = 0; i < arr.length; i++){
   strTemp = arr[i] +'';
-  if (strTemp.substr(0,1) === '2' || strTemp.substr(0,1) === '4'){
+  if (strTemp.substring(0,1) === '2' || strTemp.substring(0,1) === '4'){
     console.log (strTemp);  
   }
 }
@@ -22,8 +22,8 @@ for (let i = 0; i < arr.length; i++){
 nextNum:
 for (let i = 2; i < 101; i++){
   // signal = 0;
-  for (let ii = 2; ii < i; ii++){
-      if ( (i%ii) === 0 ) continue nextNum;
+  for (let y = 2; y < i; y++){
+      if ( (i % y) === 0 ) continue nextNum;
   }
   console.log (i + ' - Делители этого числа: 1 и ' + i);
 }
