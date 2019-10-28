@@ -9,20 +9,20 @@
 'use strict';
 
 let weekDays= ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-let out_array = document.getElementById('out_arr');
+let outArray = document.getElementById('out_arr');
 let date = new Date();
 
 for (let i = 0; i < weekDays.length; i++){
  
   if (weekDays[i] === 'saturday' || weekDays[i] === 'sunday'){
      if (i === date.getDay() ){
-        out_array.innerHTML +='<b> ' + '<i> ' + weekDays[i] + ' </i>'+ ' </b>' + ' <br>';
+        outArray.innerHTML +='<b> ' + '<i> ' + weekDays[i] + ' </i>'+ ' </b>' + ' <br>';
         } else {
-        out_array.innerHTML +='<i> ' + weekDays[i] + ' </i>' + ' <br>';
+        outArray.innerHTML +='<i> ' + weekDays[i] + ' </i>' + ' <br>';
         } 
     } else if (i === date.getDay() ){
-        out_array.innerHTML +='<b> ' + weekDays[i] + ' </b>' + ' <br>';
+        outArray.innerHTML +='<b> ' + weekDays[i] + ' </b>' + ' <br>';
     } else {
-      out_array.innerHTML +=  weekDays[i] + ' <br>';
+      outArray.innerHTML +=  weekDays[i] + ' <br>';
     }
 } 
