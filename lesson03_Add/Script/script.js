@@ -6,7 +6,7 @@
 // ·        Выходные дни - курсивом
 // ·        Текущий день - жирным шрифтом(использовать объект даты
 
-'use strict'
+'use strict';
 
 let weekDays= ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 let out_array = document.getElementById('out_arr');
