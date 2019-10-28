@@ -1,4 +1,4 @@
-//Lesson04-Add
+//Lesson03-Add
 
 // 1
 // Переменная lang может принимать 2 значения: 'ru' 'en'.
@@ -33,9 +33,16 @@ switch (lang){
     console.log ('Опять Что-то не так');  
 }
 console.log ('многомерный массив');
-result = (lang === 'ru'|| lang === 'en')?
-  ((lang === 'ru')? arrayDays[0] : arrayDays[1]) : 'Ну что опять не так?';
-  console.log(result);
+// result = (lang === 'ru'|| lang === 'en')?
+//   ((lang === 'ru')? arrayDays[0] : arrayDays[1]) : 'Ну что опять не так?';
+//   console.log(result);
+
+let index = lang !=='ru';
+index = index* 1;
+console.log (index);
+
+console.log (arrayDays[index]);
+
 // 2
 // У нас есть переменная namePerson. Если значение этой переменной “Артем” 
 // то вывести в консоль “директор”, если значение “Максим” то вывести в консоль “преподаватель”, с любым другим значением вывести в консоль “студент”
