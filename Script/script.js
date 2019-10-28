@@ -7,21 +7,37 @@
 // через многомерный массив без ифов и switch.
 // У нас есть переменная namePerson. Если значение этой переменной “Артем” то вывести в консоль “директор”, если значение “Максим” то вывести в консоль “преподаватель”, с любым другим значением вывести в консоль “студент”
 // 	Решить задачу с помощью нескольких тернарных операторов, без использования if или switch
-let lang = promt ('Укажите язык en/ru','ru');
-const enDay = 'monday, tuesday';
-const ruDay = 'понедельник, вторник';
+let lang = promt ('Укажите язык en/ru','ru'),
+    arrayDays = [['понедельник', 'вторник', 'среда', 'четврег', 'пятница', 'суббота', 'воскресенье'],
+    ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']],
+    result = ' ';
+const enDay = 'monday, tuesday, wednesday, thursday.friday.saturday.sunday',
+      ruDay = 'понедельник, вторник, среда, четврег, пятница, суббота, воскресенье';
+lang = lang.trim();
 
+console.log ('if');
   if (lang === 'ru'){
-    colon
-    return ' э слюшай да, строку вводи, да ээ';
+    console.log (ruDay);
+  } else if (lang === 'en'){
+    console.log (enDay);
   } else {
-    str.trim();
-    if (str.length > 30) {
-      str =  str.substr(0,30) + '...';
-    }
+    console.log ('Что-то не так');
   }
-  return str;
+console.log ('switch');
+switch (lang){
+  case 'ru':
+    console.log (ruDay);
+    break;
+  case 'en':
+    console.log (enDay);
+    break;
+  default:
+    console.log ('Опять Что-то не так');  
 }
+console.log ('многомерный массив');
+result = (lang === 'ru'|| lang === 'en')?
+  ((lang === 'ru')? arrayDays[1] : arrayDays[2]) : 'Ну что опять не так?';
+
 
 console.log ('Вводим не строку', appString(10));
 console.log ('Вводим строку больше 30 знаков -> получаем', appString('123456789123456789123456789999999999---'));
