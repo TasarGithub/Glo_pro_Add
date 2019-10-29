@@ -33,6 +33,7 @@ function checkBeginEnd (year){
     
       return checkBeginEnd (year);
   }
+  return year;
 }
 
 function getNumber (index){
@@ -57,15 +58,15 @@ function task1(){
   
   if (number1 > number2) {
       alert('Первое число ' + number1 + ' больше второго ' + number2);
-      console.log('Первое число ' + number1 + ' больше второго ' + number2);
+      console.log('Итог Задача №1::Первое число ' + number1 + ' больше второго ' + number2);
   } else if (number1 < number2) {
       alert('Второе число ' + number2 + ' больше первого ' + number1);
-      console.log('Второе число ' + number2 + ' больше первого ' + number1);
+      console.log('Итог Задача №1:: Второе число ' + number2 + ' больше первого ' + number1);
   } else {
       alert ('Числа равны');
-      console.log('Числа равны');
+      console.log('Итог Задача №1:: Числа равны');
   }
-}
+}//end task1
 
 function task2 (){
 //2
@@ -84,11 +85,11 @@ yearArr[1] = +checkNum ("Конечный год", 2070);
 yearArr = checkBeginEnd (yearArr);
 
 //сортировка и вывод високосных
-console.log('перед вискоксием year1 , year2: ',  yearArr);
+
 for (let y = yearArr[0]; y <= yearArr[1]; y++){
   if ((y % 4 == 0)){
       if(!(y % 100 == 0 && y % 400 != 0)){
-        console.log ('високосный ', y);
+        console.log ('Итог Задача №2:,високосный ', y);
       } 
     }
   }
@@ -104,14 +105,15 @@ function task3(){
   let num = 0,
       inItem;
   do {
-      inItem = prompt('Введите число', 1);
+      inItem = prompt('Введите число, подсчет суммы введенных чисел', 1);
       if (isNum(inItem)){
         num+=+inItem;
       }
   } while (inItem !== null);
-  console.log (num);
-}
+  console.log ("Итог Задача №3:", num);
+}//end task3
 
+// Задача №4
 // Написать простой игровой бот, который:
 // 1) Загадывает число от 1 до 100
 // 2) Задает вопрос пользователю: «Угадай число»
@@ -122,30 +124,25 @@ function task3(){
 // 7) Если пользователь ввел не число, то выводит «Введи число!» и предлагает ввести новый вариант
 // 8) Если пользователь нажимает «Отмена», то игра заканчивается
 
-function game(num){
-  let inItem = 0;
-  //do{
-    
-      if (isNum(inItem)){
+function game(num,inItem){
+  do{
         if (inItem < num){
-          inItem = prompt ('Больше! введите еще', 1);
-          continue;
+           inItem = checkNum ('Больше! введите еще', 1);
         } else if (inItem > num){
-          inItem = prompt ('Меньше! введите еще', 1);
-          continue;
+          inItem = checkNum ('Меньше! введите еще', 1);
         } else {
-          alert ( 'Число =' + inItem + 'Поздравляю вы угадали!!!');
-         
+          alert ( 'Число = ' + inItem + '. Поздравляю вы угадали!!!');
+          inItem = null;
         } 
-      }
-    //} while (inItem !== null);
-  }
+  } while (inItem !== null);
+}
 
 function task4(){
   let num = 0,
   i = 0;
-  debugger;
-  num = Math.trunc((Math.random())*10);
+  alert ('Задача №4');
+  //debugger;
+  num = Math.trunc((Math.random())*100);
   let inItem = checkNum ('Угадай число!', 1);
   game(num,inItem);
   
@@ -158,17 +155,18 @@ function task4(){
       game(num,inItem);
     } 
     
-    // if (){
-    //   continue;
-    // } else {
-    //   alert ('Конец!');
-    //   break;
-    // }
+
   }
 }
 
-
-// task1();
-// task2();
-// task3();
+task1();
+task2();
+task3();
 task4();
+
+
+// let num = 0;
+// for (let i=0; i<100; i++) {
+//   num = Math.trunc((Math.random())*101);
+//   console.log (num);
+// }
