@@ -135,22 +135,22 @@ function game(num,inItem){
 
 function task4(){
   let num = 0,
-  i = 0;
   alert ('Задача №4');
   //debugger;
   num = Math.trunc((Math.random())*100);
   let inItem = checkNum ('Угадай число!', 1);
+
   game(num,inItem);
   
   while ( confirm('Хотите сыграть еще?')) { 
+
     inItem = checkNum ('Введи число!', 1);
-    if (inItem === null) break;
     
+    if (inItem === null) break;
     else {
-      num = Math.trunc((Math.random())*10);
+      num = Math.trunc((Math.random())*100);
       game(num,inItem);
     } 
-    
 
   }
 }
