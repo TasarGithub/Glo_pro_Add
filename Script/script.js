@@ -17,7 +17,9 @@ function checkNum (num, message, defaultNum){
 }
 
 function checkBeginEnd (year1,year2){
+  debugger;
   let result ='11';
+  
   if (year1 > year2) {
     let yearTemp = year1;
     console.log('НАЧАЛО year1 , year2: ',  year1 , year2);
@@ -29,15 +31,16 @@ function checkBeginEnd (year1,year2){
 
     result = year1 + ',' + year2;
     return result;
-
   } else if (year1 == year2) {
       alert ("Года равны, введите снова");
       year1 = checkNum (year1, "Начальный год", 1970);
       year2 = checkNum(year2, "Конечный год", 1970);
 
-      checkBeginEnd (year1,year2);
+      return checkBeginEnd (year1,year2);
   }
 }
+
+
 function getNumber (index){
   let number;
 
@@ -85,6 +88,8 @@ yearBegin = checkNum (yearBegin, "Начальный год", 2070);
 yearEnd = checkNum(yearEnd, "Конечный год", 2070);
 
 //Который год больше/меньше
+checkBeginEnd (yearBegin,yearBegin);
+
 
 if (yearBegin > yearEnd) {
     yearTemp = yearBegin;
@@ -133,8 +138,52 @@ function task3(){
 // 6) После угаданного число бот спрашивает «Хотите сыграть еще?»
 // 7) Если пользователь ввел не число, то выводит «Введи число!» и предлагает ввести новый вариант
 // 8) Если пользователь нажимает «Отмена», то игра заканчивается
+// function game(n){
+//   do{
+//     inItem = prompt ('Угадай число!', 1);
+//     if (isNum(inItem)){
+//       if (inItem < num){
+//         inItem = prompt ('Больше! введите еще', 1);
+//         continue;
+//       } else if (inItem > num){
+//         inItem = prompt ('Меньше! введите еще', 1);
+//         continue;
+//       } else {
+//         alert ( 'Число =' + inItem + 'Поздравляю вы угадали!!!');
+//       } 
+//     }while (inItem !== null);
+//   }
+// }
 
 
-task1();
-task2();
-task3();
+
+
+//  let num = 0;
+//  let inItem = 0
+//  let i = 0;
+
+//  do{
+//   num = Math.trunc((Math.random())*10);
+//   Game();
+//    if (confirm('Хотите сыграть еще?')){
+//      continue;
+//    } else {
+//      break;
+//    }
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// task1();
+ task2();
+// task3();
