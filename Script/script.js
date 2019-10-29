@@ -1,45 +1,39 @@
 // bonus01
-// Написать программу, которая последовательно запрашивает два числа, 
-// после чего сравнивает их и выводит сообщение: 
-// «Первое число больше второго», «Второе число больше первого» или «Числа равны». 
-// Необходимо учесть ситуации, когда пользователь ввел строку или вообще не ввел ничего.
+
 'use strict';
+
 // Функция определения числа
 const isNum = function(n){
     return (!isNaN(parseFloat(n)) && isFinite(n));
 }
 
-function checkNum (num, message, defaultNum){
+function checkNum (message, defaultNum){
+  let num = 0;
   do {
     num = prompt(message, defaultNum);
-    } while (!isNum(num));
+    //if (num === null) break;
+    } while (!isNum(num) && (num !== null));
   return  num; 
 }
 
-function checkBeginEnd (year1,year2){
-  debugger;
-  let result ='11';
+function checkBeginEnd (year){
   
-  if (year1 > year2) {
-    let yearTemp = year1;
-    console.log('НАЧАЛО year1 , year2: ',  year1 , year2);
-    year1 = year2;
-    year2 = yearTemp;
+//  debugger;
+  if (year[0] > year[1]) {
+
+    year.reverse();
+
+    return year;
+
+  } else if (year[0] === year[1]) {
     
-    console.log(' year1 , year2: ',  year1 , year2);
-    console.log('КОНЕЦ year1 , year2: ',  year1 , year2);
-
-    result = year1 + ',' + year2;
-    return result;
-  } else if (year1 == year2) {
       alert ("Года равны, введите снова");
-      year1 = checkNum (year1, "Начальный год", 1970);
-      year2 = checkNum(year2, "Конечный год", 1970);
-
-      return checkBeginEnd (year1,year2);
+      year[0] = +checkNum ("Начальный год", 2970);
+      year[1] = +checkNum("Конечный год", 70);
+    
+      return checkBeginEnd (year);
   }
 }
-
 
 function getNumber (index){
   let number;
@@ -50,6 +44,7 @@ function getNumber (index){
   
   return number;
 }
+
 
 function task1(){
   // Написать программу, которая последовательно запрашивает два числа, после чего сравнивает их и выводит сообщение: 
@@ -80,37 +75,25 @@ function task2 (){
 
 alert ('Задача №2');
 //ввод годов 
-let yearBegin = 0, //= prompt("Начальный год", 1970),
-    yearEnd = 0, //= prompt("Конечный год", 2070),
-    yearTemp = 0;
+let yearArr = [1,2];
 
-yearBegin = checkNum (yearBegin, "Начальный год", 2070);
-yearEnd = checkNum(yearEnd, "Конечный год", 2070);
+yearArr[0] = +checkNum ("Начальный год", 2070);
+yearArr[1] = +checkNum ("Конечный год", 2070);
 
 //Который год больше/меньше
-checkBeginEnd (yearBegin,yearBegin);
+yearArr = checkBeginEnd (yearArr);
 
-
-if (yearBegin > yearEnd) {
-    yearTemp = yearBegin;
-    yearBegin = yearEnd;
-    yearEnd = yearTemp;
-
-} else if (yearBegin == yearEnd) {
-    alert ("Года равны, введите снова");
-    yearBegin = checkNum (yearBegin, "Начальный год", 1970);
-    yearEnd = checkNum(yearEnd, "Конечный год", 2115);
-}
 //сортировка и вывод високосных
-for (let y = yearBegin; y <= yearEnd; y++){
+console.log('перед вискоксием year1 , year2: ',  yearArr);
+for (let y = yearArr[0]; y <= yearArr[1]; y++){
   if ((y % 4 == 0)){
-    if(!(y % 100 == 0 && y % 400 != 0)){
-      console.log ('високосный ', y);
-    } 
-
+      if(!(y % 100 == 0 && y % 400 != 0)){
+        console.log ('високосный ', y);
+      } 
     }
   }
-}
+} //end task2
+
 //   Задача №3
 // Написать программу, которая запрашивает у пользователя числа при помощи prompt, пока он не нажмет «Отмена». 
 // После нажатия «Отмена», программа выводит сумму введенных чисел. 
@@ -138,52 +121,54 @@ function task3(){
 // 6) После угаданного число бот спрашивает «Хотите сыграть еще?»
 // 7) Если пользователь ввел не число, то выводит «Введи число!» и предлагает ввести новый вариант
 // 8) Если пользователь нажимает «Отмена», то игра заканчивается
-// function game(n){
-//   do{
-//     inItem = prompt ('Угадай число!', 1);
-//     if (isNum(inItem)){
-//       if (inItem < num){
-//         inItem = prompt ('Больше! введите еще', 1);
-//         continue;
-//       } else if (inItem > num){
-//         inItem = prompt ('Меньше! введите еще', 1);
-//         continue;
-//       } else {
-//         alert ( 'Число =' + inItem + 'Поздравляю вы угадали!!!');
-//       } 
-//     }while (inItem !== null);
-//   }
-// }
 
+function game(num){
+  let inItem = 0;
+  //do{
+    
+      if (isNum(inItem)){
+        if (inItem < num){
+          inItem = prompt ('Больше! введите еще', 1);
+          continue;
+        } else if (inItem > num){
+          inItem = prompt ('Меньше! введите еще', 1);
+          continue;
+        } else {
+          alert ( 'Число =' + inItem + 'Поздравляю вы угадали!!!');
+         
+        } 
+      }
+    //} while (inItem !== null);
+  }
 
-
-
-//  let num = 0;
-//  let inItem = 0
-//  let i = 0;
-
-//  do{
-//   num = Math.trunc((Math.random())*10);
-//   Game();
-//    if (confirm('Хотите сыграть еще?')){
-//      continue;
-//    } else {
-//      break;
-//    }
-//  }
-
-
-
-
-
-
-
-
-
-
-
+function task4(){
+  let num = 0,
+  i = 0;
+  debugger;
+  num = Math.trunc((Math.random())*10);
+  let inItem = checkNum ('Угадай число!', 1);
+  game(num,inItem);
+  
+  while ( confirm('Хотите сыграть еще?')) { 
+    inItem = checkNum ('Введи число!', 1);
+    if (inItem === null) break;
+    
+    else {
+      num = Math.trunc((Math.random())*10);
+      game(num,inItem);
+    } 
+    
+    // if (){
+    //   continue;
+    // } else {
+    //   alert ('Конец!');
+    //   break;
+    // }
+  }
+}
 
 
 // task1();
- task2();
+// task2();
 // task3();
+task4();
