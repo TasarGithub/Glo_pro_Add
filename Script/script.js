@@ -2,11 +2,11 @@
 
 'use strict';
 
-// Функция определения числа
+// Функция определения числа - используется во многих задачах
 const isNum = function(n){
     return (!isNaN(parseFloat(n)) && isFinite(n));
 }
-
+// Функция ввода  и проверки числа -используется во многих задачах
 function checkNum (message, defaultNum){
   let num = 0;
   do {
@@ -16,6 +16,7 @@ function checkNum (message, defaultNum){
   return  num; 
 }
 
+// Функция проверки годов для расчета високосных лет - используется в Задаче №2
 function checkBeginEnd (year){
   
 //  debugger;
@@ -35,7 +36,7 @@ function checkBeginEnd (year){
   }
   return year;
 }
-
+// Функция та високосных лет - используется в Задаче №2
 function getNumber (index){
   let number;
 
@@ -53,8 +54,8 @@ function task1(){
   // Необходимо учесть ситуации, когда пользователь ввел строку или вообще не ввел ничего.
   alert ('Задача №1');
 
-  let number1 = getNumber(1);
-  let number2 = getNumber (2);
+  let number1 = checkNum ('Введите 1ое число.', 1);
+  let number2 = checkNum ('Введите 2ое число.', 2);
   
   if (number1 > number2) {
       alert('Первое число ' + number1 + ' больше второго ' + number2);
