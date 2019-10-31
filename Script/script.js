@@ -1,21 +1,17 @@
 'use strict';
 
-// lesson07-Add
+// lesson07-Add-codepen
+//1) Добавлять новые <li> элементы с текстом из инпута
 
-// 2) Напишите функцию, которая будет добавлять 0 перед значениями которые состоят
-// из одной цифры (из 9:5:3  1.6.2019 сделает 09:05:03 01.06.2019)
-function plusZero(n){
-  +n;
-  n = (n < 10) ? '0'+ n : n + '';
-  return n;
-}
+let myUl = document.querySelectorAll('ul'),
+    myLi = document.querySelectorAll('li'),
+    myInpt = document.querySelector('input'),
+    myBtn = document.querySelector('button');
 
-// 1) Выведите на страницу текущую дату и время в формате '09:59:59 30.05.2018'
+myBtn.addEventListener('click', function(){
 
-let now = new Date();
-console.log('now: ', now + '');
+  let newLi = document.createElement('li');
+  newLi.textContent = myInpt.value;
+  myUl[0].appendChild(newLi);
 
-let printNow = plusZero(now.getHours()) + ':' + plusZero(now.getMinutes()) + ':' + plusZero(now.getSeconds()) + 
-' ' + plusZero(now.getDate()) + '.' + plusZero(now.getMonth() + 1) + '.' + now.getFullYear();
-console.log('printNow: ', printNow);
-document.write(printNow);
+});
