@@ -1,7 +1,6 @@
 'use strict';
-// lesson08
+// lesson08-Add
 
-// Получить кнопку "Рассчитать" через id
 const start = document.querySelector('#start'),
   cancel = document.querySelector('#cancel'),
   btnPlus = document.querySelectorAll('button'),
@@ -102,9 +101,13 @@ let appData = {
   },
   // добавление блока расходов
   addExpensesBlock(){
-    let cloneExpensesItem =  expensesItems[0].cloneNode(true);
+    let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    debugger;
+    cloneExpensesItem.childNodes.forEach(function(item){
+      item.value = '';
+    });
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem,btnExpensesPlus);
-    expensesItems =  document.querySelectorAll('.expenses-items');
+    expensesItems = document.querySelectorAll('.expenses-items');
     if  (expensesItems.length === 3) {
       btnExpensesPlus.style.display = 'none';
     }
@@ -220,8 +223,13 @@ let appData = {
         return checkItem;
     }
   }
+  
+//2) Поля с placeholder="Наименование" разрешить ввод только русских букв пробелов и знаков препинания
+
+//елси  placeholder="Наименование" - то валидация
 };
-//debugger;
+//alert("dddd");
+debugger;
 // 7) ЗАДАНИЕ Вместо проверки поля Месячный доход в методе Start, запретить нажатие кнопки
 //  Рассчитать пока поле Месячный доход пустой
 salaryAmount.addEventListener('change',function(){
