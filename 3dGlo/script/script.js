@@ -58,23 +58,24 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //menu
   const toggleMenu = () =>{
-    const btnMenu =  document.querySelector('.menu'),
+    const bodyClick =  document.querySelector('body'),
       menu =  document.querySelector('menu'),
        //закрытие/открытие меню 
       handlerMenu = () => {
         menu.classList.toggle('active-menu');
       };
+  
+    bodyClick.addEventListener('click', (event) => {
+      const target = event.target,
+      targetMenuBtn = target.closest('.menu');
     
-    btnMenu.addEventListener('click', handlerMenu);
-      
-    menu.addEventListener('click', (event) => {
-      let target = event.target;
-      target = target.closest('menu');
-
-      if (target) {
+      if (targetMenuBtn) {
+        //console.log('targetMenuBtn.className: ', targetMenuBtn.className);
+        handlerMenu();
+      } else {        
+        //console.log('target: ', target);
         handlerMenu();
       }
-
     });
   
   };
@@ -125,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let flyAnimate = () => {
       //debugger;
       flyInterval = requestAnimationFrame(flyAnimate);
-      count=count + 0.01;
+      count += 0.01;
 
       //document.documentElement.clientWidth
       console.dir('document.documentElement: ', document.documentElement);
