@@ -70,26 +70,16 @@ window.addEventListener('DOMContentLoaded', function () {
   
     bodyClick.addEventListener('click', (event) => {
       const target = event.target,
-      targetMenuBtn = target.closest('menu');
-    
-      if (targetMenuBtn) {
+      targetMenuBtn = target.closest('.menu'),
+      targetMenu = target.closest('menu');
 
-        if (target === closeBtn) {
-          handlerMenu();
-         } else if (target.href !== undefined) {
-           handlerMenu();
-         }  
-        } else {        
-          //console.log('target: ', target);
-          handlerMenu();
-        }
-        //  } else {
-        //    menuLi.forEach((elem) => { 
-        //     if (target === elem){
-        //       handlerMenu();
-        //     } 
-        //   });
-        //  }
+      if (targetMenuBtn) {
+        handlerMenu();
+      } else  if (targetMenu) {
+          if ((target === closeBtn) || (target.href !== undefined)) {
+            handlerMenu();
+          } 
+      }
     });
   };
   
