@@ -1,19 +1,70 @@
 'use strict';
 
-// lesson14-Add
+// practice02-Add
 
-// 2) Напишите функцию, которая будет добавлять 0 перед значениями которые состоят
-// из одной цифры (из 9:5:3  1.6.2019 сделает 09:05:03 01.06.2019)
-function plusZero(n){
-  return (n < 10) ? '0'+ n : n + '';
-}
+// идем по строке слева направо, вырезая от 1 символв вправо  до шаг вправо еще символ вырезаем и сравнивам эти строки, если они равны, то записваем в массив
+// полиндромов
 
-// 1) Выведите на страницу текущую дату и время в формате '09:59:59 30.05.2018'
+const polindrom = (str) => {
+  let strR = '' , strL ='', str1 = '',
+  arrPolyndroms = [],
+  tempStrArr = [];
+  let count = str.length;
+  for (let j = 0; j < count; j++){
+    
+    str1 =  str.slice(j);
+    console.log('str.length:, j ',  j);
+    
+    console.log('str str.length: ++++++++++', str1, str1.length);
+    //count--;
+    for (let i = 0, y = str.length; i <= y; i++) {
+    
+    
+        strR = str1.slice(0,i);
+        console.log('strR: ', strR);
+        tempStrArr = strR.split('');
+        tempStrArr = tempStrArr.reverse();
+        strL = tempStrArr.join('');
+        console.log('strL: ', strL);
+        if (strR === strL && strR.length > 2){
+          arrPolyndroms.push(strR);
+        }
+    
+    }
+  }
+  arrPolyndroms.sort((a, b) => a.length - b.length);
+  console.log('arrPolyndroms: ', arrPolyndroms);
+  arrPolyndroms.reverse();
+  return arrPolyndroms[0];
+  
+};
 
-let now = new Date();
-console.log('now: ', now + '');
+// const polindrom = (str2) => {
+//   let strR = '' , strL ='',
+//   arrPolyndromsMain = [],
+//   tempStrArr = []
+  
+//   console.log('str.lenght: ', str2.length);
+//   for (let i = 0, y = str2.length; i < y; i++) {
+//     arrPolyndromsMain.concat(polindromOne(str2));
+//     str2 = str2.slice(0, str2.length-1);
+//     console.log('str: ', str2);
+//   }
+//   return arrPolyndromsMain;
+// };
 
-let printNow = plusZero(now.getHours()) + ':' + plusZero(now.getMinutes()) + ':' + plusZero(now.getSeconds()) + 
-' ' + plusZero(now.getDate()) + '.' + plusZero(now.getMonth() + 1) + '.' + now.getFullYear();
-console.log('printNow: ', printNow);
-document.body.textContent = printNow;
+// const polindromMain = (str3) => {
+//   let arrMain = [];
+//   arrMain.concat(polindromOne(str3));
+//   //polindrom (str3);
+
+//   let tempStrArr = str3.split('');
+//   tempStrArr = tempStrArr.reverse();
+//   const strL = tempStrArr.join('');
+
+//   console.log('strL:********************************************************* ', strL);
+//   arrMain.concat(polindromOne(strL));
+//   return arrMain;
+// };
+
+console.log('polindrom абвгоогвфф,', polindrom('абвгоогвфф'));
