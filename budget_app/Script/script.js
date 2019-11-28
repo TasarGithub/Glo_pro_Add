@@ -207,43 +207,11 @@ let appData = {
         return ('Высокий уровень дохода');
     }
   },
-  getInfoDeposit: function(){
-    if (appData.deposit) {
-      appData.percentDeposit = appData.checkInput(1, 'Какой годовой процент?', 10);
-      appData.moneyDeposit = appData.checkInput(1, 'Какая сумма на депозите?', 10000);
-    }        
-  },
+
   calcPeriod: function(){
     return appData.budgetMonth * periodSelect.value;
-  },
-  checkInput: function(strOrNum,promptMessage,defaultItem){
-    let checkItem;
-    // strOrNum:  false - str, true - Num
-    if (!!strOrNum) { 
-        do {
-            checkItem = prompt(promptMessage, defaultItem);
-        } while (!isNum(checkItem));
-        return +checkItem;
-    } else {
-        do {
-            checkItem = prompt(promptMessage, defaultItem);
-        } while (isNum(checkItem));
-        return checkItem;
-    }
-  },
-  checkSymbol:  () => {
-
-    input.forEach((item) => {
-      if (item.placeholder === 'Наименование') {
-        let string = item.value;
-        item.value = string.replace(/[А-Яа-я]/s, '');
-      } else if (item.placeholder === 'Сумма') {
-          let number = item.value;
-          item.value = number.replace(/\D/g, '');
-      }
-    });
-
   }
+
 };
 
 salaryAmount.addEventListener('change',function(){
@@ -264,7 +232,7 @@ inputAll.forEach((item) => {
   item.addEventListener('input', () => {
     if (item.placeholder === 'Наименование') {
       let string = item.value;
-      item.value = string.replace(/[^а-я.!?()\s,-:;]/gi, '');
+      item.value = string.replace(/[^а-яё.!?()\s,:;-]/gi, '');
     } else if (item.placeholder === 'Сумма') {
         let number = item.value;
         item.value = number.replace(/\D/g, '');
