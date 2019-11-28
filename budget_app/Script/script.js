@@ -256,11 +256,13 @@ periodSelect.addEventListener('change', function(){
   incomePeriodValue.value = appData.calcPeriod();
 });
 
+// 2) Поля с placeholder="Наименование" разрешить ввод только русских букв пробелов и знаков препинания
+// 3) Поля с placeholder="Сумма" разрешить ввод только цифр
 inputAll.forEach((item) => {
   item.addEventListener('input', () => {
     if (item.placeholder === 'Наименование') {
       let string = item.value;
-      item.value = string.replace(/[^а-я.!?()\s,-;]/gi, '');
+      item.value = string.replace(/[^а-я.!?()\s,-:;]/gi, '');
     } else if (item.placeholder === 'Сумма') {
         let number = item.value;
         item.value = number.replace(/\D/g, '');
