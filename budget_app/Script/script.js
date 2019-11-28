@@ -1,6 +1,7 @@
 'use strict';
-// lesson08-Add
+// lesson08
 
+// Получить кнопку "Рассчитать" через id
 const start = document.querySelector('#start'),
   cancel = document.querySelector('#cancel'),
   btnPlus = document.querySelectorAll('button'),
@@ -27,6 +28,8 @@ const start = document.querySelector('#start'),
   additionalExpensesIem = document.querySelector('.additional_expenses-iem'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'), //получ на практике
+  inputAll = document.querySelectorAll('input'),
+
   periodAmount = document.querySelector('.period-amount');
   let expensesItems = document.querySelectorAll('.expenses-items'),
       incomeItems =  document.querySelectorAll('.income-items');
@@ -65,11 +68,9 @@ let appData = {
     appData.getTargetMonth();
 
     appData.showResult();
-// 6) ЗАДАНИЕ Блокировать все input[type=text] с левой стороны после нажатия кнопки
-// рассчитать,
+
     appData.blockInput(); 
-// после этого кнопка Рассчитать пропадает и появляется кнопка
-// Сбросить (есть в верстке) на кнопку сбросить пока ничего не навешиваем
+
     appData.turnStartCancel();
   },
 
@@ -91,8 +92,7 @@ let appData = {
     additionalExpensesValue.value = appData.addExpenses.join(', ');
     additionalIncomeValue.value = appData.addIncome.join(', ');
     targetMonthValue.value = appData.getTargetMonth(); 
-// 5) ЗАДАНИЕ Добавить обработчик события внутри метода showResult, который будет отслеживать
-// период и сразу менять значение в поле “Накопления за период”
+
     periodSelect.addEventListener('change',function(){
       appData.getPeriod();
     });
@@ -102,13 +102,14 @@ let appData = {
   // добавление блока расходов
   addExpensesBlock(){
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
-    debugger;
-    cloneExpensesItem.childNodes.forEach(function(item){
+    //1) Реализовать так, чтобы инпуты добавлялись пустые без value при добавлении новых полей в обязательных расходах и дополнительных доходах 
+    cloneExpensesItem.querySelectorAll('*').forEach((item) => {
+      console.log('item: ', item);
       item.value = '';
     });
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem,btnExpensesPlus);
     expensesItems = document.querySelectorAll('.expenses-items');
-    if  (expensesItems.length === 3) {
+    if (expensesItems.length === 3) {
       btnExpensesPlus.style.display = 'none';
     }
   },
@@ -117,7 +118,6 @@ let appData = {
   //будем перебирать с помощью forEach все элементы с классом expenses-item
   getExpenses(){
     expensesItems.forEach (function(item){
-      //debugger;
       let itemExpenses = item.querySelector('.expenses-title').value,
           cashExpenses = item.querySelector('.expenses-amount').value;
       if (itemExpenses !== '' && cashExpenses !== ''){
@@ -125,27 +125,33 @@ let appData = {
       }
     });
   },
-  //2) ЗАДАНИЕ Создать метод addIncomeBlock аналогичный addExpensesBlock
+  
   addIncomeBlock(){    
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    console.log('cloneIncomeItem: ', cloneIncomeItem);
+    //1) Реализовать так, чтобы инпуты добавлялись пустые без value при добавлении новых полей в обязательных расходах и дополнительных доходах 
+    cloneIncomeItem.querySelectorAll('*').forEach((item) => {
+      console.log('item: ', item);
+      item.value = '';
+    });
+
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem,btnIncomePlus);
     incomeItems = document.querySelectorAll('.income-items');
-    if  (incomeItems.length === 3) {
+
+    if (incomeItems.length === 3) {
       btnIncomePlus.style.display = 'none';
     }
   },
-  //1) ЗАДАНИЕ Переписать метод getIncome аналогично getExpenses
-  //получить все доходы и записать их в объект
-  //будем перебирать с помощью forEach все элементы с классом income-items
+  
   getIncome(){
     incomeItems.forEach (function(item){
-      //debugger;
+
       let itemIncome = item.querySelector('.income-title').value,
           cashIncome = item.querySelector('.income-amount').value;
       if (itemIncome.value !== '' && cashIncome !== ''){
         appData.income[itemIncome] = cashIncome;
       }
-      //debugger;
+
     });
     for (let key in appData.income){
       appData.incomeMonth += +appData.income[key];
@@ -222,25 +228,43 @@ let appData = {
         } while (isNum(checkItem));
         return checkItem;
     }
-  }
-  
-//2) Поля с placeholder="Наименование" разрешить ввод только русских букв пробелов и знаков препинания
+  },
+  checkSymbol:  () => {
 
-//елси  placeholder="Наименование" - то валидация
+    input.forEach((item) => {
+      if (item.placeholder === 'Наименование') {
+        let string = item.value;
+        item.value = string.replace(/[А-Яа-я]/s, '');
+      } else if (item.placeholder === 'Сумма') {
+          let number = item.value;
+          item.value = number.replace(/\D/g, '');
+      }
+    });
+
+  }
 };
-//alert("dddd");
-debugger;
-// 7) ЗАДАНИЕ Вместо проверки поля Месячный доход в методе Start, запретить нажатие кнопки
-//  Рассчитать пока поле Месячный доход пустой
+
 salaryAmount.addEventListener('change',function(){
   start.addEventListener('click',appData.start);
 });
 btnIncomePlus.addEventListener('click', appData.addIncomeBlock);
 btnExpensesPlus.addEventListener('click', appData.addExpensesBlock);
- //4)ЗАДАНИЕ Число под полоской (range) должно меняться в зависимости от позиции range
+
 periodSelect.addEventListener('change', function(){
   appData.getPeriod();
-// 5) ЗАДАНИЕ Добавить обработчик события внутри метода showResult, который будет отслеживать
-// период и сразу менять значение в поле “Накопления за период”
+
   incomePeriodValue.value = appData.calcPeriod();
 });
+
+inputAll.forEach((item) => {
+  item.addEventListener('input', () => {
+    if (item.placeholder === 'Наименование') {
+      let string = item.value;
+      item.value = string.replace(/[^а-я.!?()\s,-;]/gi, '');
+    } else if (item.placeholder === 'Сумма') {
+        let number = item.value;
+        item.value = number.replace(/\D/g, '');
+    }
+  });
+});
+
