@@ -102,6 +102,7 @@ let appData = {
   // добавление блока расходов
   addExpensesBlock(){
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    //Задание
     //1) Реализовать так, чтобы инпуты добавлялись пустые без value при добавлении новых полей в обязательных расходах и дополнительных доходах 
     cloneExpensesItem.querySelectorAll('*').forEach((item) => {
       console.log('item: ', item);
@@ -129,6 +130,7 @@ let appData = {
   addIncomeBlock(){    
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
     console.log('cloneIncomeItem: ', cloneIncomeItem);
+    //Задание
     //1) Реализовать так, чтобы инпуты добавлялись пустые без value при добавлении новых полей в обязательных расходах и дополнительных доходах 
     cloneIncomeItem.querySelectorAll('*').forEach((item) => {
       console.log('item: ', item);
@@ -255,7 +257,7 @@ periodSelect.addEventListener('change', function(){
 
   incomePeriodValue.value = appData.calcPeriod();
 });
-
+//Задание
 // 2) Поля с placeholder="Наименование" разрешить ввод только русских букв пробелов и знаков препинания
 // 3) Поля с placeholder="Сумма" разрешить ввод только цифр
 inputAll.forEach((item) => {
