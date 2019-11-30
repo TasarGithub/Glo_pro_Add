@@ -1,5 +1,5 @@
 'use strict';
-// lesson11.2-Add
+// lesson12-Add
 
 const start = document.querySelector('#start'),
   cancel = document.querySelector('#cancel'),
