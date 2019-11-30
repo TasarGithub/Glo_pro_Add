@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
-  //lesson14-Add
-  
+  // l14-add
   // таймер
   const countTimer = (deadLine) => {
 
@@ -24,13 +23,8 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     
     const declOfNum = (n, titles)  => {
-      return titles[(n % 10 === 1 && n % 100 !== 11) ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2]
-    };
-    console.log(declOfNum(1,['день', 'дня', 'дней']));
-    console.log(declOfNum(2,['день', 'дня', 'дней']));
-    console.log(declOfNum(3,['день', 'дня', 'дней']));
-    console.log(declOfNum(4,['день', 'дня', 'дней']));
-    console.log(declOfNum(5,['день', 'дня', 'дней']));
+      return titles[(n % 10 === 1 && n % 100 !== 11) ?
+         0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2]};
 
     const updateClock = () => {
       const timer = getTimeRemanining();
